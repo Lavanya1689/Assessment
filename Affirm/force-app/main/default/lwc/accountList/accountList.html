@@ -1,0 +1,35 @@
+<template>
+    <div class="container slds-p-around_large slds-scrollable_y">
+        <div class="slds-text-title_caps slds-text-title_bold slds-p-bottom_medium">Accounts</div>
+        <div>
+            <template if:true={showList}>
+                <div if:true={showSpinner} class="slds-is-relative">
+                    <lightning-spinner alternative-text="Loading..." variant="brand"></lightning-spinner>
+                </div>
+                <template if:true={accounts.data}>
+                    <lightning-layout   class="slds-grid slds-grid_vertical" horizontal-align="left">
+                        <template for:each={accounts.data} for:item="account">
+                            <div key={account.Id} class="slds-box slds-theme_default">
+                                <c-account-list-item 
+                                    data-id={account.Id}
+                                    key={account.Id}
+                                    account={account}
+                                    onselect={handleSelect}
+                                ></c-account-list-item>
+                            </div>
+                        </template>
+                    </lightning-layout><br>
+                    <lightning-button variant="brand" label="Next" title="Next" onclick={next} class="slds-m-left_x-small"></lightning-button>
+                </template>
+            </template>
+            
+            <template if:true={showDetails}>
+                <c-account-details account-id={selectedAccountId} ongoback={handleGoBack}></c-account-details>
+            </template>
+        </div>       
+    </div>
+</template>
+
+
+
+

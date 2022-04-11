@@ -1,0 +1,24 @@
+<template>
+    <template if:true={account}>
+        <lightning-card variant="narrow" icon-name="standard:account">
+            <h1 slot="title">{account.Name}</h1>
+            <div class="acc-container">
+                <lightning-layout horizontal-align="space">
+                    <lightning-layout-item padding="around-small">
+                        <p> <img src={account.Owner.FullPhotoUrl} alt="Profile photo" /></p>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                        <p>Name: {account.Name}</p>
+                        <p>Industry: {account.Industry}</p>
+                        <p>Type: {account.Type}</p>
+                        <p>Owner: {account.Owner.Name}</p>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+            <div slot="actions">
+                <lightning-button variant="brand" label="Back" title="Back" onclick={back} class="slds-m-left_x-small"></lightning-button>
+            </div>
+        </lightning-card>
+    </template><br>
+   
+</template>
